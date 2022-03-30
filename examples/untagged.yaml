@@ -1,0 +1,73 @@
+#
+# project training set
+# configuration example in yaml format
+#
+
+#
+# common attributes
+#
+project: example
+version: 0.1.3
+language: italian
+
+
+#
+# training set sentences
+# each intent has these attributes:
+# - the name of the intent
+# - an optional list of entities associated, for a syntax validation (to be implmented)
+# - the list of entity-annotated (using with `[]()` syntax) intent-related sentences examples
+#
+training:
+
+#
+# get_gender intent
+#
+- intent: get_gender
+
+  entities:
+    - gender
+
+  examples:
+    - sono un [uomo](gender)!
+    - sono un essere umano di genere [femminile](gender).
+
+      # in una frase di esempio che inizia con il carattere `[` bisogna racchiudere tra virgolette,
+      # altrimenti il parser YAML crede che sia una lista...
+    - "[ragazza](gender)"
+    - Sono una [femmina](gender)
+    - Sono un [bambino](gender) di 11 anni emmezzo.
+
+#
+# get_person_address intent
+#
+- intent: get_person_address
+
+  entities:
+
+    - person
+    - address
+
+  examples:
+    - Daniela abita in [via Roma 19, interno 4](address).
+    - [Abito](label3) principalmente in [corso De Stefanis 88 interno 4](address), 
+      ma ogni [tanto](label1) vado anche nella mia casa di [via G.B. D'Albertis 88/1](address)!
+
+    - il mio [indirizzo di casa](label2) è [corso De Stefanis 99 interno 4](address), 
+      ma lavoro in [via G.B. D'Albertis 3/1](work_address)!
+
+    - mi chiamo [Giorgio Robino](person) ed abito in [corso Magenta 35/4 a Genova](address)
+    - abito in via Bozzano 2/4 Genova, Italia
+
+#
+# do_not_know intent
+# no entities for thsi intent
+#
+- intent: do_not_know
+
+  examples:
+    - non te lo dico
+    - bho
+    - non lo so
+    - chissà
+  

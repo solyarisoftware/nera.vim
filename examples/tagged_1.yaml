@@ -1,0 +1,8 @@
+# after_tagging.yaml
+  - intent: body_temperature_data
+    examples: |
+      - il termometro misura [36.3](body_temperature) gradi
+      - [36.9](body_temperature)
+      - temperatura: [35,9](body_temperature)
+      - la temperatura è di [36 e 7](body_temperature) gradi
+      - [36 , 8](body_temperature)
