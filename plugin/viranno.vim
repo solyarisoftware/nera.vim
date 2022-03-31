@@ -30,3 +30,4 @@ for i in range(len(s:labels))
   exe printf("vnoremap <leader>%d :s/\\%%V.*\\%%V./[&](%s)/<cr>n:nohl<cr>f)", i+1, s:labels[i])
   exe printf("nnoremap <leader>%d ciW[<c-o>P](%s)<esc>", i+1, s:labels[i])
 endfor
+
