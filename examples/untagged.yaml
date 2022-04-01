@@ -29,14 +29,14 @@ training:
     - gender
 
   examples:
-    - sono un [uomo](gender)!
-    - sono un essere umano di genere [femminile](gender).
+    - sono un uomo!
+    - sono un essere umano di genere femminile.
 
       # in una frase di esempio che inizia con il carattere `[` bisogna racchiudere tra virgolette,
       # altrimenti il parser YAML crede che sia una lista...
-    - "[ragazza](gender)"
-    - Sono una [femmina](gender)
-    - Sono un [bambino](gender) di 11 anni emmezzo.
+    - "ragazza"
+    - Sono una femmina
+    - Sono un bambino di 11 anni emmezzo.
 
 #
 # get_person_address intent
@@ -49,14 +49,14 @@ training:
     - address
 
   examples:
-    - Daniela abita in [via Roma 19, interno 4](address).
-    - [Abito](label3) principalmente in [corso De Stefanis 88 interno 4](address), 
-      ma ogni [tanto](label1) vado anche nella mia casa di [via G.B. D'Albertis 88/1](address)!
+    - Daniela abita in via Roma 19, interno 4.
+    - Abito principalmente in corso De Stefanis 88 interno 4, 
+      ma ogni tanto vado anche nella mia casa di via G.B. D'Albertis 88/1!
 
-    - il mio [indirizzo di casa](label2) è [corso De Stefanis 99 interno 4](address), 
-      ma lavoro in [via G.B. D'Albertis 3/1](work_address)!
+    - il mio indirizzo di casa è corso De Stefanis 99 interno 4, 
+      ma lavoro in via G.B. D'Albertis 3/1!
 
-    - mi chiamo [Giorgio Robino](person) ed abito in [corso Magenta 35/4 a Genova](address)
+    - mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
     - abito in via Bozzano 2/4 Genova, Italia
 
 #
