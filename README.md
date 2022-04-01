@@ -64,13 +64,15 @@ Using vim-plug, in your `.vimrc` file:
 
 In vim command mode (`:`) these commands are available:
 
-| command                                                          | description                                                            |
-| ---                                                              | ---                                                                    |
-| `:NesaSetFunctionKeyLabel` `functionKey` `label` [`wordsNumber`] | maps the specified `functionKey` to a substitution macro with argument |
-|                                                                  | `label`, and optional argument `wordsNumber`                           |
-| `:NesaShowFunctionKeys`                                          | shows function keys mapping                                            |
+| command                                                          | description                                                                     |
+| ---                                                              | ---                                                                             |
+| `:NesaSetFunctionKeyLabel` `functionKey` `label` [`wordsNumber`] | maps the specified `functionKey` to a substitution macro with argument `label`, 
+                                                                                       and optional argument `wordsNumber`                           |
+| `:NesaShowFunctionKeys`                                          | shows function keys mapping                                                     |
 
 Examples:
+
+### Current (single) word annotation
 
 Given the sentence (line):
 
@@ -84,15 +86,18 @@ To assign to function key `F1` a substitution for visual mode and single word se
 
 - step 2: put the cursor at the begin of the word you want to annotate: 
 
-    mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
-              ^
-              |
-              set the vim cursor here
+      mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
+                ^
+                |
+                set the vim cursor here
 
 - step 3: press `F1`. The line is updated with the entity notation syntax decoration:
 
-    mi chiamo [Giorgio](person_name) Robino ed abito in corso Magenta 35/4 a Genova
+      mi chiamo [Giorgio](person_name) Robino ed abito in corso Magenta 35/4 a Genova
     
+
+### Multiple close words annotation
+
 In facts, this is not perfect, because a person name in this case is composed by two consecutive words (*Giorgio Robino*),
 you maybe want to preset (another or the same) function key to automatically substitute the current and the successive word.
 In this case, set teh mapping with argument `wordsNumber` set to `2`:
@@ -103,12 +108,15 @@ In this case, set teh mapping with argument `wordsNumber` set to `2`:
 
 - step 2: again put the cursor at the begin of the word you want to annotate: 
 
-    mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
-              ^
+      mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
+                ^
 
 - step 3: press `F1`. The line is updated and in this case 
 
-    mi chiamo [Giorgio Robino](person_name) ed abito in corso Magenta 35/4 a Genova
+      mi chiamo [Giorgio Robino](person_name) ed abito in corso Magenta 35/4 a Genova
+
+
+### Visual mode annotation
 
 Anyway, even if you do not specify the `words number` argument,
 you can proceed withe visual selection mode. So:
@@ -119,14 +127,14 @@ you can proceed withe visual selection mode. So:
 
 - step 2: go in vim visual mode (pressing `v`) and select the span you want to annotate: 
 
-    mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
-                                         ^                         ^
-                                         |                         |
-                                         start visual selection    end visual selection
+      mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
+                                           ^                         ^
+                                           |                         |
+                                           start visual selection    end visual selection
 
 - step 3: press `esc` and `F1`. The line is updated and in this case 
 
-    mi chiamo [Giorgio Robino](person_name) ed abito in [corso Magenta 35/4 a Genova](address)
+      mi chiamo [Giorgio Robino](person_name) ed abito in [corso Magenta 35/4 a Genova](address)
 
 
 ## Status / How to contribute
@@ -141,9 +149,19 @@ For any proposal and issue, please submit here on github issues for bugs, sugges
 You can also contact me via email (giorgio.robino@gmail.com).
 
 
+## To do
+
+- command :NesaShowFunctionKeys must rebuilt giving a more clear output
+- add a help / online tutorial command
+- tune arguments validation
+- exoende syntax, managing not only RASA-like style syntax annotation, but also other variants (a la Alexa, DialogFlow, etc.)
+
+
 ## Acknowledgements
 
-- Thanks you to https://vi.stackexchange.com/a/34824/983
+- Thanks you to [biggybi](https://vi.stackexchange.com/users/22375/biggybi) 
+  that helped me [here](https://vi.stackexchange.com/a/34824/983), 
+  inspiring me to build-up this plugin.
 
 
 ## License
