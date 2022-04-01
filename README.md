@@ -56,14 +56,8 @@ to a substitution "macro" that afterward substitute a span of words with the syn
 though the visual selection or setting the cursor to the start of the word (entity) you want to tag.
 See "usage" section for details.
 
-## Install
 
-Using vim-plug, in your `.vimrc` file:
-
-    Plug 'solyarisoftware/nesa.vim'
-
-
-## Usage
+## Commands
 
 In vim command mode (`:`) these commands are available:
 
@@ -75,7 +69,8 @@ In vim command mode (`:`) these commands are available:
 |                                                  | *wordsNumber* is a number of contiguous words to be selected, This is an optional argument (default value is 1)     |
 | :`NesaKeys`                                      | shows function keys mapping                                                                                         |
 
-Examples:
+
+## Usage examples
 
 ### Current (single) word annotation
 
@@ -145,6 +140,13 @@ you can proceed withe visual selection mode. So:
 ### Undo labeling
 
 If you are unhappy with your labelling, just undo in vim as usual, pressing `u` in normal mode!
+
+
+## Install
+
+Using vim-plug, in your `.vimrc` file:
+
+    Plug 'solyarisoftware/nesa.vim'
 
 
 ## Status / How to contribute
