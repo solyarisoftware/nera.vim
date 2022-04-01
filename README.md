@@ -69,11 +69,11 @@ In vim command mode (`:`) these commands are available:
 
 | command                                                    | description                                                                     |
 | ---                                                        | ---                                                                             |
-| :`NesaSetFunctionKeyLabel functionKey label [wordsNumber]` | maps the specified **functionKey** to a substitution macro with argument **label**, and optional argument **wordsNumber**
-<br> <br> `functionKey` valid values are number 1...12 or strings F1...F12
-<br> <br> `label` is the entity name (single word in camelCase or snake_case) 
-<br> <br> `wordsNumber` is a number of contiguous words to be selected, This is an optional argument (default value is 1) |
-| :`NesaShowFunctionKeys`                                    | shows function keys mapping                                                     |
+| `:NesaSetFunctionKeyLabel functionKey label [wordsNumber]` | maps the specified `functionKey` to a substitution macro with argument `label`, and optional argument `wordsNumber` |
+|                                                            | `functionKey` valid values are number 1...12 or strings F1...F12 |
+|                                                            | `label` is the entity name (single word in camelCase or snake_case) |
+|                                                            | `wordsNumber` is a number of contiguous words to be selected, This is an optional argument (default value is 1) |
+| `:NesaShowFunctionKeys`                                    | shows function keys mapping                                                     |
 
 Examples:
 
