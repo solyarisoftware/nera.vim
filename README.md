@@ -3,7 +3,7 @@
 
 Named Entities (Rasa-like) Syntax Annotator for Vim editor.
 
-This vim plugin helps to annotate named entities (e.g. in RASA YAML files) 
+This vim plugin helps to annotate named entities (e.g. in [RASA](https://rasa.com/) YAML files) 
 using simple entity annotation syntax
 
 ### What the named entity `[...](...)` syntax is? 
@@ -69,7 +69,7 @@ In vim command mode (`:`) these commands are available:
 
 | command                                                    | description                                                                     |
 | ---                                                        | ---                                                                             |
-| :`NesaSetFunctionKeyLabel functionKey label [wordsNumber] | maps the specified `functionKey` to a substitution macro with argument `label`, and optional argument `wordsNumber` |
+| :`NesaSetFunctionKeyLabel` functionKey label [wordsNumber] | maps the specified **functionKey** to a substitution macro with argument **label**, and optional argument **wordsNumber**<br> **functionKey** valid values are number 1...12 or strings F1...F12<br> **label** is the entity name (single word in camelCase or snake_case) <br> **wordsNumber** is a number of contiguous words to be selected, This is an optional argument (default value is 1) |
 | :`NesaShowFunctionKeys`                                    | shows function keys mapping                                                     |
 
 Examples:
@@ -98,7 +98,7 @@ To assign to function key `F1` a substitution for visual mode and single word se
       mi chiamo [Giorgio](person_name) Robino ed abito in corso Magenta 35/4 a Genova
     
 
-### Multiple close words annotation
+### Multiple contiguous words annotation
 
 In facts, this is not perfect, because a person name in this case is composed by two consecutive words (*Giorgio Robino*),
 you maybe want to preset (another or the same) function key to automatically substitute the current and the successive word.
