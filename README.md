@@ -64,11 +64,10 @@ Using vim-plug, in your `.vimrc` file:
 
 In vim command mode (`:`) these commands are available:
 
-| command                                                          | description                                                                     |
-| ---                                                              | ---                                                                             |
-| `:NesaSetFunctionKeyLabel` `functionKey` `label` [`wordsNumber`] | maps the specified `functionKey` to a substitution macro with argument `label`, 
-                                                                                       and optional argument `wordsNumber`                           |
-| `:NesaShowFunctionKeys`                                          | shows function keys mapping                                                     |
+| command                                                    | description                                                                     |
+| ---                                                        | ---                                                                             |
+| `:NesaSetFunctionKeyLabel` functionKey label [wordsNumber] | maps the specified `functionKey` to a substitution macro with argument `label`, and optional argument `wordsNumber` |
+| `:NesaShowFunctionKeys`                                    | shows function keys mapping                                                     |
 
 Examples:
 
