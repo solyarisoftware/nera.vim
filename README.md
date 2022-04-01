@@ -67,13 +67,13 @@ Using vim-plug, in your `.vimrc` file:
 
 In vim command mode (`:`) these commands are available:
 
-| command                                                | description                                                                                                         |
-| ---                                                    | ---                                                                                                                 |
-| :`NesaMap` **functionKey** **label** [**wordsNumber**] | maps the specified **functionKey** to a substitution macro with argument **label**, and optional argument **wordsNumber** |
-|                                                        | **functionKey** valid values are number `1`...`12` or strings `F1`...`F12`                                                    |
-|                                                        | **label** is the entity name (single word in camelCase or snake_case)                                                 |
-|                                                        | **wordsNumber** is a number of contiguous words to be selected, This is an optional argument (default value is 1)     |
-| :`NesaKeys`                                             | shows function keys mapping                                                                                         |
+| command                                          | description                                                                                                         |
+| ---                                              | ---                                                                                                                 |
+| :`NesaMap` *functionKey* *label* [*wordsNumber*] | maps the specified *functionKey* to a substitution macro with argument *label*, and optional argument *wordsNumber* |
+|                                                  | *functionKey* valid values are number `1`...`12` or strings `F1`...`F12`                                            |
+|                                                  | *label* is the entity name (single word in camelCase or snake_case)                                                 |
+|                                                  | *wordsNumber* is a number of contiguous words to be selected, This is an optional argument (default value is 1)     |
+| :`NesaKeys`                                      | shows function keys mapping                                                                                         |
 
 Examples:
 
