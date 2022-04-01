@@ -1,13 +1,12 @@
 # nesa.vim
+**If you like the project, please ⭐️star this repository to show your support! 🙏**
 
 Named Entities (Rasa-like) Syntax Annotator for Vim editor.
 
-**If you like the project, please ⭐️star this repository to show your support! 🙏**
-
 This vim plugin helps to annotate named entities (e.g. in RASA YAML files) 
-using entity annotation syntax:
+using simple entity annotation syntax
 
-**What's the named entity []() syntax** 
+### What the named entity []() syntax is? 
 
 ```
 [entity_value](entity_label)
@@ -50,8 +49,12 @@ So the annotated sentence, using above described syntax, is:
 mi chiamo [Giorgio Robino](person) ed abito in [corso Magenta 35/4 a Genova](address)
 ```
 
-**What the plugin does**
+### What the plugin does?
 
+Using just a single vim command, you can map one of 12 function keys (`F1`,...,`F12`)  
+to a substitution "macro" that afterward substitute a span of words with the syntax decoration, 
+though the visual selection or setting the cursor to the start of the word (entity) you want to tag.
+See "usage" section for details.
 
 ## Install
 
