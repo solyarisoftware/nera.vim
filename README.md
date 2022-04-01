@@ -6,7 +6,7 @@ Named Entities (Rasa-like) Syntax Annotator for Vim editor.
 This vim plugin helps to annotate named entities (e.g. in RASA YAML files) 
 using simple entity annotation syntax
 
-### What the named entity []() syntax is? 
+### What the named entity `[...](...)` syntax is? 
 
 ```
 [entity_value](entity_label)
@@ -69,8 +69,8 @@ In vim command mode (`:`) these commands are available:
 
 | command                                                    | description                                                                     |
 | ---                                                        | ---                                                                             |
-| `:NesaSetFunctionKeyLabel` functionKey label [wordsNumber] | maps the specified `functionKey` to a substitution macro with argument `label`, and optional argument `wordsNumber` |
-| `:NesaShowFunctionKeys`                                    | shows function keys mapping                                                     |
+| :`NesaSetFunctionKeyLabel functionKey label [wordsNumber] | maps the specified `functionKey` to a substitution macro with argument `label`, and optional argument `wordsNumber` |
+| :`NesaShowFunctionKeys`                                    | shows function keys mapping                                                     |
 
 Examples:
 
@@ -82,7 +82,7 @@ Given the sentence (line):
 
 To assign to function key `F1` a substitution for visual mode and single word selection:
 
-- map F1
+- assign a new "macro" substitution to `F1`
 
       :NesaSetFunctionKeyLabel f1 person_name
 
@@ -104,7 +104,7 @@ In facts, this is not perfect, because a person name in this case is composed by
 you maybe want to preset (another or the same) function key to automatically substitute the current and the successive word.
 In this case, set teh mapping with argument `wordsNumber` set to `2`:
 
-- map F2
+- assign a new "macro" substitution to `F2`
 
       :NesaSetFunctionKeyLabel 2 person_name 2
 
@@ -123,8 +123,8 @@ In this case, set teh mapping with argument `wordsNumber` set to `2`:
 Anyway, even if you do not specify the `words number` argument,
 you can proceed withe visual selection mode. So:
 
-- map F3
-3
+- assign a new "macro" substitution to `F3`
+
       :NesaSetFunctionKeyLabel 3 address
 
 - go in vim visual mode (pressing `v`) and select the span you want to annotate: 
@@ -137,6 +137,11 @@ you can proceed withe visual selection mode. So:
 - press `esc` and `F1`. The line is updated and in this case 
 
       mi chiamo [Giorgio Robino](person_name) ed abito in [corso Magenta 35/4 a Genova](address)
+
+
+### Undo labeling
+
+If you are unhappy with your labelling, just undo in vim as usual, pressing `u` in normal mode!
 
 
 ## Status / How to contribute
