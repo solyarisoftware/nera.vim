@@ -80,18 +80,18 @@ Given the sentence (line):
 
 To assign to function key `F1` a substitution for visual mode and single word selection:
 
-- step 1: map F1
+- map F1
 
       :NesaSetFunctionKeyLabel f1 person_name
 
-- step 2: put the cursor at the begin of the word you want to annotate: 
+- put the cursor at the begin of the word you want to annotate: 
 
       mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
                 ^
                 |
                 set the vim cursor here
 
-- step 3: press `F1`. The line is updated with the entity notation syntax decoration:
+- press `F1`. The line is updated with the entity notation syntax decoration:
 
       mi chiamo [Giorgio](person_name) Robino ed abito in corso Magenta 35/4 a Genova
     
@@ -102,16 +102,16 @@ In facts, this is not perfect, because a person name in this case is composed by
 you maybe want to preset (another or the same) function key to automatically substitute the current and the successive word.
 In this case, set teh mapping with argument `wordsNumber` set to `2`:
 
-- step 1: map F2
+- map F2
 
       :NesaSetFunctionKeyLabel 2 person_name 2
 
-- step 2: again put the cursor at the begin of the word you want to annotate: 
+- again put the cursor at the begin of the word you want to annotate: 
 
       mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
                 ^
 
-- step 3: press `F1`. The line is updated and in this case 
+- press `F2`. The line is updated and in this case 
 
       mi chiamo [Giorgio Robino](person_name) ed abito in corso Magenta 35/4 a Genova
 
@@ -121,18 +121,18 @@ In this case, set teh mapping with argument `wordsNumber` set to `2`:
 Anyway, even if you do not specify the `words number` argument,
 you can proceed withe visual selection mode. So:
 
-- step 1: map F3
+- map F3
 3
       :NesaSetFunctionKeyLabel 3 address
 
-- step 2: go in vim visual mode (pressing `v`) and select the span you want to annotate: 
+- go in vim visual mode (pressing `v`) and select the span you want to annotate: 
 
       mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
                                            ^                         ^
                                            |                         |
                                            start visual selection    end visual selection
 
-- step 3: press `esc` and `F1`. The line is updated and in this case 
+- press `esc` and `F1`. The line is updated and in this case 
 
       mi chiamo [Giorgio Robino](person_name) ed abito in [corso Magenta 35/4 a Genova](address)
 
