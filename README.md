@@ -67,13 +67,13 @@ Using vim-plug, in your `.vimrc` file:
 
 In vim command mode (`:`) these commands are available:
 
-| command                                                    | description                                                                     |
-| ---                                                        | ---                                                                             |
-| `:NesaSetFunctionKeyLabel functionKey label [wordsNumber]` | maps the specified `functionKey` to a substitution macro with argument `label`, and optional argument `wordsNumber` |
-|                                                            | `functionKey` valid values are number 1...12 or strings F1...F12 |
-|                                                            | `label` is the entity name (single word in camelCase or snake_case) |
-|                                                            | `wordsNumber` is a number of contiguous words to be selected, This is an optional argument (default value is 1) |
-| `:NesaShowFunctionKeys`                                    | shows function keys mapping                                                     |
+| command                                          | description                                                                                                         |
+| ---                                              | ---                                                                                                                 |
+| :`NesaSet` `functionKey` `label` [`wordsNumber`] | maps the specified `functionKey` to a substitution macro with argument `label`, and optional argument `wordsNumber` |
+|                                                  | `functionKey` valid values are number 1...12 or strings F1...F12                                                    |
+|                                                  | `label` is the entity name (single word in camelCase or snake_case)                                                 |
+|                                                  | `wordsNumber` is a number of contiguous words to be selected, This is an optional argument (default value is 1)     |
+| :`NesaMap`                                       | shows function keys mapping                                                                                         |
 
 Examples:
 
@@ -87,7 +87,7 @@ To assign to function key `F1` a substitution for visual mode and single word se
 
 - assign a new "macro" substitution to `F1`
 
-      :NesaSetFunctionKeyLabel f1 person_name
+      :Nesa f1 person_name
 
 - put the cursor at the begin of the word you want to annotate: 
 
@@ -109,7 +109,7 @@ In this case, set teh mapping with argument `wordsNumber` set to `2`:
 
 - assign a new "macro" substitution to `F2`
 
-      :NesaSetFunctionKeyLabel 2 person_name 2
+      :NesaSet 2 person_name 2
 
 - again put the cursor at the begin of the word you want to annotate: 
 
@@ -128,7 +128,7 @@ you can proceed withe visual selection mode. So:
 
 - assign a new "macro" substitution to `F3`
 
-      :NesaSetFunctionKeyLabel 3 address
+      :NesaSet 3 address
 
 - go in vim visual mode (pressing `v`) and select the span you want to annotate: 
 
@@ -161,7 +161,7 @@ You can also contact me via email (giorgio.robino@gmail.com).
 
 ## To do
 
-- command :NesaShowFunctionKeys must rebuilt giving a more clear output
+- command `:NesaMap` must rebuilt giving a more clear output
 - add a help / online tutorial command
 - tune arguments validation
 - exoende syntax, managing not only RASA-like style syntax annotation, but also other variants (a la Alexa, DialogFlow, etc.)
