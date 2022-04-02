@@ -1,13 +1,16 @@
-# nera.vim
+# Nera.vim
+
 Named Entities (Rasa-like) syntax Annotator for vim editor.
 
 **IF YOU LIKE THE PROJECT, PLEASE ⭐️STAR THIS REPOSITORY TO SHOW YOUR SUPPORT! 🙏**
 
 
-## Concept
+## What? Why?
 
-This vim plugin helps to annotate named entities (e.g. in [RASA](https://rasa.com/) YAML files) 
-using simple entity annotation syntax
+This vim plugin helps to annotate named entities 
+(e.g. in [RASA](https://rasa.com/) YAML files) 
+using simple entity annotation syntax.
+
 
 **What the named entity `[entity_value](entity_label)` syntax fomat is?** 
 
@@ -59,20 +62,18 @@ that add a entity label
 - or to the current word and a configurable number of adiacent words,
   setting the cursor to the start of the word (entity) you want to tag.
 
-See "usage" section for details.
-
 
 ## Commands syntax
 
 In vim command mode (`:`) these commands are available:
 
-| command                                          | description                                                                                                         |
-| ---                                              | ---                                                                                                                 |
+| command                                          | description                                                                                             |
+| ---                                              | ---                                                                                                     |
 | :`NeraMap` *functionKey* *label* [*wordCounter*] | maps the specified *functionKey* to a substitution macro with argument *label*, and optional argument *wordCounter* |
-|                                                  | *functionKey* valid values are number `1`...`12` or strings `F1`...`F12`                                            |
-|                                                  | *label* is the entity name (single word in camelCase or snake_case)                                                 |
-|                                                  | *wordsCounter* is a number of contiguous words to be selected, This is an optional argument (default value is 1)     |
-| :`NeraKeys`                                      | shows function keys mapping                                                                                         |
+|                                                  | <br>*functionKey* valid values are number `1`...`12` or strings `F1`...`F12`                                        | 
+|                                                  | <br>*label* is the entity name (single word in camelCase or snake_case)                                             |
+|                                                  | <br>*wordsCounter* is a number of contiguous words to be selected, This is an optional argument (default value is 1)|
+| :`NeraKeys`                                      | shows function keys mapping                                                                                   |
 
 
 ## Usage examples
@@ -142,9 +143,11 @@ you can proceed withe visual selection mode. So:
       mi chiamo [Giorgio Robino](person_name) ed abito in [corso Magenta 35/4 a Genova](address)
 
 
-### Undo labeling
+## Tips
 
-If you are unhappy with your labelling, just undo in vim as usual, pressing `u` in normal mode!
+- Undo labeling
+
+  If you are unhappy with your labelling, just undo in vim as usual, pressing `u` in normal mode!
 
 
 ## Install
