@@ -1,8 +1,10 @@
-# nesa.vim
-
-**If you like the project, please ⭐️star this repository to show your support! 🙏**
-
+# nera.vim
 Named Entities (Rasa-like) syntax Annotator for vim editor.
+
+**IF YOU LIKE THE PROJECT, PLEASE ⭐️STAR THIS REPOSITORY TO SHOW YOUR SUPPORT! 🙏**
+
+
+## Concept
 
 This vim plugin helps to annotate named entities (e.g. in [RASA](https://rasa.com/) YAML files) 
 using simple entity annotation syntax
@@ -32,9 +34,7 @@ Where:
     by example the label is made by alphabet letters and the character `_`
   - the label is delimited by characters `(` e `)`
 
-Example:
-
-Given the sentence
+By example, given the sentence
 
 ```
 mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
@@ -45,29 +45,33 @@ You want to annotate entities entity_label = entity_value:
 - `address` = `corso Magenta 35/4 a Genova`
 
 
-So the annotated sentence, using above described syntax, is:
+Using above described syntax, the annotated sentence is:
 ```
 mi chiamo [Giorgio Robino](person) ed abito in [corso Magenta 35/4 a Genova](address)
 ```
 
 **What the plugin does?**
 
-Using just a single vim command, you can map one of 12 function keys (`F1`,...,`F12`)  
-to a substitution "macro" that afterward substitute a span of words with the syntax decoration, 
-though the visual selection or setting the cursor to the start of the word (entity) you want to tag.
+With the vim plugin command `:NeraMap`, 
+you can map up to 12 function keys (`F1`,...,`F12`) to a syntax substitution/decoration "macro" 
+that add a entity label 
+- to a visual selected text,
+- or to the current word and a configurable number of adiacent words,
+  setting the cursor to the start of the word (entity) you want to tag.
+
 See "usage" section for details.
 
 
-## Commands
+## Commands syntax
 
 In vim command mode (`:`) these commands are available:
 
 | command                                          | description                                                                                                         |
 | ---                                              | ---                                                                                                                 |
-| :`NeraMap` *functionKey* *label* [*wordsNumber*] | maps the specified *functionKey* to a substitution macro with argument *label*, and optional argument *wordsNumber* |
+| :`NeraMap` *functionKey* *label* [*wordCounter*] | maps the specified *functionKey* to a substitution macro with argument *label*, and optional argument *wordCounter* |
 |                                                  | *functionKey* valid values are number `1`...`12` or strings `F1`...`F12`                                            |
 |                                                  | *label* is the entity name (single word in camelCase or snake_case)                                                 |
-|                                                  | *wordsNumber* is a number of contiguous words to be selected, This is an optional argument (default value is 1)     |
+|                                                  | *wordsCounter* is a number of contiguous words to be selected, This is an optional argument (default value is 1)     |
 | :`NeraKeys`                                      | shows function keys mapping                                                                                         |
 
 
@@ -101,7 +105,7 @@ To assign to function key `F1` a substitution for visual mode and single word se
 
 In facts, this is not perfect, because a person name in this case is composed by two consecutive words (*Giorgio Robino*),
 you maybe want to preset (another or the same) function key to automatically substitute the current and the successive word.
-In this case, set teh mapping with argument `wordsNumber` set to `2`:
+In this case, set teh mapping with argument `wordCounter` set to `2`:
 
 - assign a new "macro" substitution to `F2`
 
@@ -147,7 +151,7 @@ If you are unhappy with your labelling, just undo in vim as usual, pressing `u` 
 
 Using vim-plug, in your `.vimrc` file:
 
-    Plug 'solyarisoftware/nesa.vim'
+    Plug 'solyarisoftware/nera.vim'
 
 
 ## Status / How to contribute
