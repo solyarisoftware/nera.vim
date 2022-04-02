@@ -5,7 +5,7 @@ Named Entities (Rasa-like) syntax Annotator for vim editor.
 **IF YOU LIKE THE PROJECT, PLEASE ⭐️STAR THIS REPOSITORY TO SHOW YOUR SUPPORT! 🙏**
 
 
-## What? Why?
+## 🤔 What and Why?
 
 This vim plugin helps to annotate named entities 
 (e.g. in [RASA](https://rasa.com/) YAML files) 
@@ -63,7 +63,7 @@ that add a entity label
   setting the cursor to the start of the word (entity) you want to tag.
 
 
-## Commands syntax
+## 👊 Commands syntax
 
 In vim command mode (`:`) these commands are available:
 
@@ -143,21 +143,28 @@ you can proceed withe visual selection mode. So:
       mi chiamo [Giorgio Robino](person_name) ed abito in [corso Magenta 35/4 a Genova](address)
 
 
-## Tips
+## 💡 Tips
 
 - Undo labeling
 
   If you are unhappy with your labelling, just undo in vim as usual, pressing `u` in normal mode!
 
+- Visual mode is always on
 
-## Install
+  Any time you assign a key with `NeraMap`, 
+  you set the word mode for a specified number of contiguous words,
+  but you also enable the visual mode! You can optionally 
+  - select set the cursor at the start of word and press afterward the function key
+  - selct in visual mode a span of words and press afterward the function key
+
+## 📦 Install
 
 Using vim-plug, in your `.vimrc` file:
 
     Plug 'solyarisoftware/nera.vim'
 
 
-## Status / How to contribute
+## ⭐️ Status / How to contribute
 
 This project is work-in-progress.
 
@@ -176,8 +183,13 @@ You can also contact me via email (giorgio.robino@gmail.com).
 - tune arguments validation
 - exoende syntax, managing not only RASA-like style syntax annotation, but also other variants (a la Alexa, DialogFlow, etc.)
 
+## Changelog
 
-## Acknowledgements
+- v. 0.2.3
+  - `NeraKeys` has now a cleaner list of key mappings
+  - `NeraMap` now accept the function key argument just pressing the corresponding function key!
+
+## 👏 Acknowledgements
 
 - Thanks you to [biggybi](https://vi.stackexchange.com/users/22375/biggybi) 
   that helped me [here](https://vi.stackexchange.com/a/34824/983), 
