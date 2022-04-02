@@ -164,5 +164,5 @@ endfunction
 "
 " USER COMMANDS
 "
-command! NesaKeys call s:showFunctionKeysMapping()
-command! -nargs=* NesaMap call s:setFunctionKeyLabel(<f-args>)
+command! NeraKeys call s:showFunctionKeysMapping()
+command! -nargs=* NeraMap call s:setFunctionKeyLabel(<f-args>)

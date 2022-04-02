@@ -1,12 +1,13 @@
 # nesa.vim
+
 **If you like the project, please ⭐️star this repository to show your support! 🙏**
 
-Named Entities (Rasa-like) Syntax Annotator for Vim editor.
+Named Entities (Rasa-like) syntax Annotator for vim editor.
 
 This vim plugin helps to annotate named entities (e.g. in [RASA](https://rasa.com/) YAML files) 
 using simple entity annotation syntax
 
-### What the named entity `[...](...)` syntax is? 
+**What the named entity `[entity_value](entity_label)` syntax fomat is?** 
 
 ```
 [entity_value](entity_label)
@@ -49,7 +50,7 @@ So the annotated sentence, using above described syntax, is:
 mi chiamo [Giorgio Robino](person) ed abito in [corso Magenta 35/4 a Genova](address)
 ```
 
-### What the plugin does?
+**What the plugin does?**
 
 Using just a single vim command, you can map one of 12 function keys (`F1`,...,`F12`)  
 to a substitution "macro" that afterward substitute a span of words with the syntax decoration, 
@@ -63,11 +64,11 @@ In vim command mode (`:`) these commands are available:
 
 | command                                          | description                                                                                                         |
 | ---                                              | ---                                                                                                                 |
-| :`NesaMap` *functionKey* *label* [*wordsNumber*] | maps the specified *functionKey* to a substitution macro with argument *label*, and optional argument *wordsNumber* |
+| :`NeraMap` *functionKey* *label* [*wordsNumber*] | maps the specified *functionKey* to a substitution macro with argument *label*, and optional argument *wordsNumber* |
 |                                                  | *functionKey* valid values are number `1`...`12` or strings `F1`...`F12`                                            |
 |                                                  | *label* is the entity name (single word in camelCase or snake_case)                                                 |
 |                                                  | *wordsNumber* is a number of contiguous words to be selected, This is an optional argument (default value is 1)     |
-| :`NesaKeys`                                      | shows function keys mapping                                                                                         |
+| :`NeraKeys`                                      | shows function keys mapping                                                                                         |
 
 
 ## Usage examples
@@ -82,7 +83,7 @@ To assign to function key `F1` a substitution for visual mode and single word se
 
 - assign a new "macro" substitution to `F1`
 
-      :NesaMap f1 person_name
+      :NeraMap f1 person_name
 
 - put the cursor at the begin of the word you want to annotate: 
 
@@ -104,7 +105,7 @@ In this case, set teh mapping with argument `wordsNumber` set to `2`:
 
 - assign a new "macro" substitution to `F2`
 
-      :NesaMap 2 person_name 2
+      :NeraMap 2 person_name 2
 
 - again put the cursor at the begin of the word you want to annotate: 
 
@@ -123,7 +124,7 @@ you can proceed withe visual selection mode. So:
 
 - assign a new "macro" substitution to `F3`
 
-      :NesaMap 3 address
+      :NeraMap 3 address
 
 - go in vim visual mode (pressing `v`) and select the span you want to annotate: 
 
@@ -163,7 +164,7 @@ You can also contact me via email (giorgio.robino@gmail.com).
 
 ## To do
 
-- command `:NesaKeys` must rebuilt giving a more clear output
+- command `:NeraKeys` must rebuilt giving a more clear output
 - add a help / online tutorial command
 - tune arguments validation
 - exoende syntax, managing not only RASA-like style syntax annotation, but also other variants (a la Alexa, DialogFlow, etc.)
