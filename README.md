@@ -2,8 +2,6 @@
 
 Named Entities (Rasa-like) syntax Annotator for vim editor.
 
-**IF YOU LIKE THE PROJECT, PLEASE ⭐️STAR THIS REPOSITORY TO SHOW YOUR SUPPORT! 🙏**
-
 
 ## 🤔 What and Why?
 
@@ -167,11 +165,10 @@ This project is work-in-progress.
 
 I'm not a vimscript expert, so any contribute is welcome.
 
-**If you like the project, please ⭐️star this repository to show your support! 🙏**
-
 For any proposal and issue, please submit here on github issues for bugs, suggestions, etc.
 You can also contact me via email (giorgio.robino@gmail.com).
 
+**IF YOU LIKE THE PROJECT, PLEASE ⭐️STAR THIS REPOSITORY TO SHOW YOUR SUPPORT! 🙏**
 
 ## To do
 
