@@ -69,8 +69,7 @@ In vim command mode (`:`) these commands are available:
 
 | command                                              | description                  |
 | ---                                                  | ---                          |
-| :`NeraSet` *functionKey* *label* [*contiguousWords*] | 
-  maps the specified *functionKey* to a substitution macro with argument *label*,
+| :`NeraSet` *functionKey* *label* [*contiguousWords*] | maps the specified *functionKey* to a substitution macro with argument *label*,
   and optional argument *contiguousWords*.
   <br>
   *functionKey* valid values are number `1`...`12` or strings `F1`...`F12`                                         
