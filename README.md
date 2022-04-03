@@ -70,11 +70,7 @@ In vim command mode (`:`) these commands are available:
 | command                                              | description                  |
 | ---                                                  | ---                          |
 | :`NeraShow`                                          | shows function keys mapping  |
-| :`NeraSet` *functionKey* *label* [*contiguousWords*] | maps the specified *functionKey* to a substitution macro with argument *label*, and optional argument *contiguouswords*.
-<br\>*functionKey* valid values are number `1`...`12` or strings `F1`...`F12`
-<br/>*label* is the entity name (single word in camelCase or snake_case)
-<br/>*wordsCounter* is a number of contiguous words to be selected,
-this is an optional argument (default value is 1)                                     | 
+| :`NeraSet` *functionKey* *label* [*contiguousWords*] | maps the specified *functionKey* to a substitution macro with argument *label*, and optional argument *contiguouswords*.  <br\>*functionKey* valid values are number `1`...`12` or strings `F1`...`F12` <br/>*label* is the entity name (single word in camelCase or snake_case) <br/>*wordsCounter* is a number of contiguous words to be selected, this is an optional argument (default value is 1) | 
 
 
 ## Usage examples
