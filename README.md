@@ -55,7 +55,7 @@ mi chiamo [Giorgio Robino](person) ed abito in [corso Magenta 35/4 a Genova](add
 
 **What the plugin does?**
 
-With the vim plugin command `:NeraMap`, 
+With the vim plugin command `:NeraSet`, 
 you can map up to 12 function keys (`F1`,...,`F12`) to a syntax substitution/decoration "macro" 
 that add a entity label 
 - to a visual selected text,
@@ -67,13 +67,18 @@ that add a entity label
 
 In vim command mode (`:`) these commands are available:
 
-| command                                          | description                                                                                             |
-| ---                                              | ---                                                                                                     |
-| :`NeraMap` *functionKey* *label* [*wordCounter*] | maps the specified *functionKey* to a substitution macro with argument *label*, and optional argument *wordCounter* |
-|                                                  | <br>*functionKey* valid values are number `1`...`12` or strings `F1`...`F12`                                        | 
-|                                                  | <br>*label* is the entity name (single word in camelCase or snake_case)                                             |
-|                                                  | <br>*wordsCounter* is a number of contiguous words to be selected, This is an optional argument (default value is 1)|
-| :`NeraKeys`                                      | shows function keys mapping                                                                                   |
+| command                                              | description                                                                    |
+| ---                                                  | ---                                                                            |
+| :`NeraSet` *functionKey* *label* [*contiguousWords*] | maps the specified *functionKey* to a substitution macro with argument *label*, 
+                                                         and optional argument *contiguousWords*.
+                                                         <br>
+                                                         *functionKey* valid values are number `1`...`12` or strings `F1`...`F12`                                         
+                                                         <br>
+                                                         *label* is the entity name (single word in camelCase or snake_case)                                              
+                                                         <br>
+                                                        *wordsCounter* is a number of contiguous words to be selected, 
+                                                        this is an optional argument (default value is 1)                               | 
+| :`NeraShow`                                          | shows function keys mapping                                                   |
 
 
 ## Usage examples
@@ -88,7 +93,7 @@ To assign to function key `F1` a substitution for visual mode and single word se
 
 - assign a new "macro" substitution to `F1`
 
-      :NeraMap f1 person_name
+      :NeraSet f1 person_name
 
 - put the cursor at the begin of the word you want to annotate: 
 
@@ -106,11 +111,11 @@ To assign to function key `F1` a substitution for visual mode and single word se
 
 In facts, this is not perfect, because a person name in this case is composed by two consecutive words (*Giorgio Robino*),
 you maybe want to preset (another or the same) function key to automatically substitute the current and the successive word.
-In this case, set teh mapping with argument `wordCounter` set to `2`:
+In this case, set teh mapping with argument `contiguousWords` set to `2`:
 
 - assign a new "macro" substitution to `F2`
 
-      :NeraMap 2 person_name 2
+      :NeraSet 2 person_name 2
 
 - again put the cursor at the begin of the word you want to annotate: 
 
@@ -129,7 +134,7 @@ you can proceed withe visual selection mode. So:
 
 - assign a new "macro" substitution to `F3`
 
-      :NeraMap 3 address
+      :NeraSet 3 address
 
 - go in vim visual mode (pressing `v`) and select the span you want to annotate: 
 
@@ -151,7 +156,7 @@ you can proceed withe visual selection mode. So:
 
 - Visual mode is always on
 
-  Any time you assign a key with `NeraMap`, 
+  Any time you assign a key with `NeraSet`, 
   you set the word mode for a specified number of contiguous words,
   but you also enable the visual mode! You can optionally 
   - select set the cursor at the start of word and press afterward the function key
@@ -178,16 +183,16 @@ You can also contact me via email (giorgio.robino@gmail.com).
 
 ## To do
 
-- command `:NeraKeys` must rebuilt giving a more clear output
+- command `:NeraShow` must rebuilt giving a more clear output
 - add a help / online tutorial command
 - tune arguments validation
 - exoende syntax, managing not only RASA-like style syntax annotation, but also other variants (a la Alexa, DialogFlow, etc.)
 
 ## Changelog
 
-- v. 0.2.3
-  - `NeraKeys` has now a cleaner list of key mappings
-  - `NeraMap` now accept the function key argument just pressing the corresponding function key!
+- v. 0.3.0
+  - `NeraShow` has now a cleaner list of key mappings
+  - `NeraSet` now accept the function key argument just pressing the corresponding function key!
 
 ## 👏 Acknowledgements
 

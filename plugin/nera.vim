@@ -15,6 +15,9 @@
 "
 
 
+"
+" list of function keys, as string representation
+"
 let s:functionKeys = [
   \'F1',
   \'F2',
@@ -31,6 +34,9 @@ let s:functionKeys = [
 \]
 
 
+"
+" list of function keys, as vim string representation of the key pressed
+"
 let s:functionKeysDelimiters = [
   \'<F1>',
   \'<F2>',
@@ -97,14 +103,20 @@ function s:showFunctionKeysMapping()
 
     if !empty(functionKeyMap)
       " execute 'map <F'.i.'>'
-      echo '<F'.i.'> ' . functionKeyMap
+      if i < 10
+        echo '<F'.i.'>  ' . functionKeyMap
+      else
+        echo '<F'.i.'> ' . functionKeyMap
+      endif
+    else
+      echo '<F'.i.'>'
     endif
   endfor
 
 endfunction
 
 
-function s:mapFunctionKeyLabelAnnotation(functionKey, label, wordCounter)
+function s:mapFunctionKeyLabelAnnotation(functionKey, label, contiguousWords)
   " couples to a specified function key:
   " - a normal mode macro (to a specified label) 
   " - and a visual mode macro (to a specified label) 
@@ -136,7 +148,7 @@ function s:mapFunctionKeyLabelAnnotation(functionKey, label, wordCounter)
   " character of the word
 
   " https://stackoverflow.com/questions/2147875/what-vim-commands-can-be-used-to-quote-unquote-words
-  exe printf('nnoremap %s c%dw[<C-r><C-o>"](%s)<esc>', a:functionKey, a:wordCounter, a:label)
+  exe printf('nnoremap %s c%dw[<C-r><C-o>"](%s)<esc>', a:functionKey, a:contiguousWords, a:label)
 
 endfunction
 
@@ -146,23 +158,23 @@ function s:setFunctionKeyLabel(...)
 
   " at least 1 argument is required
   if a:0 == 0
-      echo 'error: arguments <functionKey>, <label>, [<word_counter>] are not supplied'
+      echo 'error: arguments <functionKey>, <label>, [<contiguous_words>] are not supplied'
       return
   endif
 
   if a:0 == 1
-      echo 'error: arguments <label>, [<word_counter>] are not supplied'
+      echo 'error: arguments <label>, [<contiguous_words>] are not supplied'
       return
     endif 
 
   if a:0 == 2
       let label = a:2
-      let wordCounter = 1
+      let contiguousWords = 1
   endif 
 
   if a:0 == 3
       let label = a:2
-      let wordCounter = a:3
+      let contiguousWords = a:3
   endif 
     
   if a:0 > 3
@@ -172,15 +184,15 @@ function s:setFunctionKeyLabel(...)
 
   let functionKey = s:validateFunctionKey(a:1)
   " TODO validate label
-  " TODO validate wordCounter
+  " TODO validate contiguousWords
 
   if functionKey == v:null
     return
   endif
 
-  echo 'functionKey: ' . functionKey . ', label: ' . label  . ', word counter: ' . wordCounter
+  echo 'functionKey: ' . functionKey . ', label: ' . label  . ', contiguous words: ' . contiguousWords
 
-  call s:mapFunctionKeyLabelAnnotation(functionKey, label, wordCounter)
+  call s:mapFunctionKeyLabelAnnotation(functionKey, label, contiguousWords)
 
 endfunction
 
@@ -188,5 +200,5 @@ endfunction
 "
 " USER COMMANDS
 "
-command! NeraKeys call s:showFunctionKeysMapping()
-command! -nargs=* NeraMap call s:setFunctionKeyLabel(<f-args>)
+command! NeraShow call s:showFunctionKeysMapping()
+command! -nargs=* NeraSet call s:setFunctionKeyLabel(<f-args>)
