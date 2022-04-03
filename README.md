@@ -1,13 +1,13 @@
 # Nera.vim
 
-Named Entities (Rasa-like) syntax Annotator for vim editor.
+**N**amed **E**ntities **R**ecognition (Rasa-like syntax) **A**nnotator for the vim editor.
 
 
-## 🤔 What and Why?
+## 🤔 what is it for?
 
 This vim plugin helps to annotate named entities 
-(e.g. in [RASA](https://rasa.com/) YAML files) 
-using simple entity annotation syntax.
+using simple entity annotation syntax,
+used in [RASA](https://rasa.com/) YAML files and any other compatible engine. 
 
 
 **What the named entity `[entity_value](entity_label)` syntax fomat is?** 
@@ -54,24 +54,24 @@ mi chiamo [Giorgio Robino](person) ed abito in [corso Magenta 35/4 a Genova](add
 **What the plugin does?**
 
 With the vim plugin command `:NeraSet`, 
-you can map up to 12 function keys (`F1`,...,`F12`) to a syntax substitution/decoration "macro" 
+you can map up to 12 function keys (`<F1>`,...,`<F12>`) to a syntax substitution/decoration "macro" 
 that add a entity label 
 - to a visual selected text,
 - or to the current word and a configurable number of adiacent words,
   setting the cursor to the start of the word (entity) you want to tag.
 
 
-## 👊 Commands syntax
+## 👊 Commands
 
 In vim command mode (`:`) these commands are available:
 
 | command                                              | description                  |
 | ---                                                  | ---                          |
 | :`NeraShow`                                          | shows function keys mapping  |
-| :`NeraSet` *functionKey* *label* [*contiguousWords*] | maps the specified *functionKey* to a substitution macro with argument *label*, and optional argument *contiguouswords*.  <br><br>*functionKey* valid values are number `1`...`12` or strings `F1`...`F12` <br><br>*label* is the entity name (single word in camelCase or snake_case) <br><br>*wordsCounter* is a number of contiguous words to be selected, this is an optional argument (default value is 1) | 
+| :`NeraSet` *functionKey* *label* [*contiguousWords*] | maps the specified *functionKey* to a substitution macro with argument *label*, and optional argument *contiguouswords*.  <br><br>*functionKey* valid values are number `1`...`12` or strings `F1`...`F12`, or `<F1>`,...,`<F12>` key pressing.<br><br>*label* is the entity name (single word in camelCase or snake_case).<br><br>*wordsCounter* is a number of contiguous words to be selected, this is an optional argument (default value is 1).| 
 
 
-## Usage examples
+## `NeraSet` usage examples
 
 ### Current (single) word annotation
 
@@ -79,31 +79,33 @@ Given the sentence (line):
 
     mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
 
-To assign to function key `F1` a substitution for visual mode and single word selection:
+To assign to function key `<F1>` a substitution for visual mode and single word selection:
 
-- assign a new "macro" substitution to `F1`
+- assign a new "macro" substitution to `<F1>`
 
       :NeraSet f1 person_name
 
-- put the cursor at the begin of the word you want to annotate: 
+- **put the cursor at the begin of the word you want to annotate**: 
 
       mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
                 ^
                 |
                 set the vim cursor here
 
-- press `F1`. The line is updated with the entity notation syntax decoration:
+- press `<F1>`. The line is updated with the entity notation syntax decoration:
 
       mi chiamo [Giorgio](person_name) Robino ed abito in corso Magenta 35/4 a Genova
     
 
 ### Multiple contiguous words annotation
 
-In facts, this is not perfect, because a person name in this case is composed by two consecutive words (*Giorgio Robino*),
-you maybe want to preset (another or the same) function key to automatically substitute the current and the successive word.
-In this case, set teh mapping with argument `contiguousWords` set to `2`:
+In facts, this is not what you want, because a full person name is usually composed 
+by two consecutive words (*Giorgio Robino*),
+so you maybe want to preset (another or the same) function key `<F1>` 
+to automatically substitute the current and the successive word.
+In this case, set the mapping with argument `contiguousWords` set to `2`:
 
-- assign a new "macro" substitution to `F2`
+- assign a new "macro" substitution to `<F2>`
 
       :NeraSet 2 person_name 2
 
@@ -112,7 +114,7 @@ In this case, set teh mapping with argument `contiguousWords` set to `2`:
       mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
                 ^
 
-- press `F2`. The line is updated and in this case 
+- press `<F2>`. The line is updated and in this case 
 
       mi chiamo [Giorgio Robino](person_name) ed abito in corso Magenta 35/4 a Genova
 
@@ -122,7 +124,7 @@ In this case, set teh mapping with argument `contiguousWords` set to `2`:
 Anyway, even if you do not specify the `words number` argument,
 you can proceed withe visual selection mode. So:
 
-- assign a new "macro" substitution to `F3`
+- assign a new "macro" substitution to `<F3>`
 
       :NeraSet 3 address
 
@@ -133,7 +135,7 @@ you can proceed withe visual selection mode. So:
                                            |                         |
                                            start visual selection    end visual selection
 
-- press `esc` and `F1`. The line is updated and in this case 
+- press `esc` and `<F3>`. The line is updated and in this case 
 
       mi chiamo [Giorgio Robino](person_name) ed abito in [corso Magenta 35/4 a Genova](address)
 
