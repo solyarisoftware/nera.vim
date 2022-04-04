@@ -67,13 +67,13 @@ In vim command mode (`:`) these commands are available:
 
 | command                                              | description                  |
 | ---                                                  | ---                          |
-| :`NeraSet` `functionKey` `label` [`contiguousWords`] | maps the specified `functionKey` to a substitution macro with argument `label`, and optional argument `contiguouswords`.  <br><br>`functionKey` valid values are number `1`...`12` or strings `F1`...`F12`, or `<F1>`,...,`<F12>` key pressing.<br><br>`label` is the entity name (single word in camelCase or snake_case).<br><br>`wordsCounter` is a number of contiguous words to be selected, this is an optional argument (default value is 1).| 
+| `:NeraSet` *functionKey* *label* [*contiguousWords*] | maps the specified *functionKey* to a substitution macro with argument *label*, and optional argument *contiguousWords*.  <br><br>*functionKey* valid values are number `1` ... `12` or strings `F1` ... `F12`, or `<F1>` ... `<F12>` key pressing.<br><br>*label* is the entity name (single word in camelCase or snake_case).<br><br>*contiguousWords* is a number of contiguous words to be selected, this is an optional argument (default value is 1).| 
 
 Utilities:
 | command                                              | description                  |
 | ---                                                  | ---                          |
-| :`NeraMap`                                           | shows function keys mapping  |
-| :`NeraLoad` `command_script_file`                    | load and execute a script file containing Nera commands or any other vim `:` commands |
+| `:NeraMap`                                           | shows function keys mapping  |
+| `:NeraLoad` *command_script_file*                      | load and execute a script file containing Nera commands or any other vim `:` commands |
 
 
 ## Usage
@@ -187,17 +187,17 @@ Execute all Nera commands previously saved in specified script file.
 Suppose you run commands:
 
 ```
-NeraSet <F1>  name 1
-NeraSet <F2>  address 1 
-NeraSet <F3>  company 1 
-NeraSet <F4>  location 1 
-NeraSet <F5>  email 
+:NeraSet <F1>  name 1
+:NeraSet <F2>  address 1 
+:NeraSet <F3>  company 1 
+:NeraSet <F4>  location 1 
+:NeraSet <F5>  email 
 ```
 
 Afterwad, you want to show the key mappings:
 
 ```
-NeraMap
+:NeraMap
 ```
 ```
 <F1>  c1w[<C-R><C-O>"](name)<Esc>
