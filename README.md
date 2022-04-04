@@ -67,13 +67,18 @@ In vim command mode (`:`) these commands are available:
 
 | command                                              | description                  |
 | ---                                                  | ---                          |
-| :`NeraShow`                                          | shows function keys mapping  |
-| :`NeraSet` *functionKey* *label* [*contiguousWords*] | maps the specified *functionKey* to a substitution macro with argument *label*, and optional argument *contiguouswords*.  <br><br>*functionKey* valid values are number `1`...`12` or strings `F1`...`F12`, or `<F1>`,...,`<F12>` key pressing.<br><br>*label* is the entity name (single word in camelCase or snake_case).<br><br>*wordsCounter* is a number of contiguous words to be selected, this is an optional argument (default value is 1).| 
+| :`NeraSet` `functionKey` `label` [`contiguousWords`] | maps the specified `functionKey` to a substitution macro with argument `label`, and optional argument `contiguouswords`.  <br><br>`functionKey` valid values are number `1`...`12` or strings `F1`...`F12`, or `<F1>`,...,`<F12>` key pressing.<br><br>`label` is the entity name (single word in camelCase or snake_case).<br><br>`wordsCounter` is a number of contiguous words to be selected, this is an optional argument (default value is 1).| 
+
+Utilities:
+| command                                              | description                  |
+| ---                                                  | ---                          |
+| :`NeraMap`                                           | shows function keys mapping  |
+| :`NeraLoad` `command_script_file`                    | load a script file containing Nera (or any other vim `:` commands |
 
 
-## `NeraSet` usage examples
+## Usage
 
-### Current (single) word annotation
+### `NeraSet` for current (single) word annotation
 
 Given the sentence (line):
 
@@ -97,7 +102,7 @@ To assign to function key `<F1>` a substitution for visual mode and single word 
       mi chiamo [Giorgio](person_name) Robino ed abito in corso Magenta 35/4 a Genova
     
 
-### Multiple contiguous words annotation
+### `NeraSet` for Multiple contiguous words annotation
 
 In facts, this is not what you want, because a full person name is usually composed 
 by two consecutive words (*Giorgio Robino*),
@@ -119,7 +124,7 @@ In this case, set the mapping with argument `contiguousWords` set to `2`:
       mi chiamo [Giorgio Robino](person_name) ed abito in corso Magenta 35/4 a Genova
 
 
-### Visual mode annotation
+### `NeraSet` for visual mode annotation
 
 Anyway, even if you do not specify the `words number` argument,
 you can proceed withe visual selection mode. So:
@@ -140,19 +145,57 @@ you can proceed withe visual selection mode. So:
       mi chiamo [Giorgio Robino](person_name) ed abito in [corso Magenta 35/4 a Genova](address)
 
 
+## `NeraLoad` 
+
+Execute all Nera commands previously saved in specified script file.
+
+1. you create your script file `examples/my_project_configs.vim` 
+   containing Nera or other vim commands, by example:
+
+   ```
+   "
+   " my_project_configs.vim
+   "
+
+   " F1 - F4
+   NeraSet <F1>  name 1
+   NeraSet <F2>  address 1 
+   NeraSet <F3>  company 1 
+   NeraSet <F4>  location 1 
+
+   " F5 - F8
+   NeraSet <F5>  email 
+   NeraSet <F6>  name 2 
+   NeraSet <F7>  name 3
+   NeraSet <F8>  address 1 
+
+   " F9 - F12
+   NeraSet <F9>  gender
+   NeraSet <F10> address 3
+   NeraSet <F12> company 2 
+   ``` 
+
+2. Afterward you run the script from command mode:
+
+   ```
+   :NeraLoad examples/my_project_configs.vim
+   ```
+
 ## 💡 Tips
 
-- Undo labeling
+- **Undo labeling**
 
-  If you are unhappy with your labelling, just undo in vim as usual, pressing `u` in normal mode!
+  If you are unhappy with your `NeraSet` labelling, 
+  just undo in vim as usual, pressing `u` in normal mode!
 
-- Visual mode is always on
+- **Visual mode is always on**
 
   Any time you assign a key with `NeraSet`, 
   you set the word mode for a specified number of contiguous words,
   but you also enable the visual mode! You can optionally 
   - select set the cursor at the start of word and press afterward the function key
   - selct in visual mode a span of words and press afterward the function key
+
 
 ## 📦 Install
 
@@ -174,15 +217,16 @@ You can also contact me via email (giorgio.robino@gmail.com).
 
 ## To do
 
-- command `:NeraShow` must rebuilt giving a more clear output
 - add a help / online tutorial command
 - tune arguments validation
-- exoende syntax, managing not only RASA-like style syntax annotation, but also other variants (a la Alexa, DialogFlow, etc.)
+- extend syntax, managing not only RASA-like style syntax annotation, 
+  but also other variants (a la Alexa, DialogFlow, etc.)
 
 ## Changelog
 
-- v. 0.3.0
-  - `NeraShow` has now a cleaner list of key mappings
+- v. 0.4.0
+  - `NeraLoad` new command to load script of commands
+  - `NeraMap` has now a cleaner list of key mappings
   - `NeraSet` now accept the function key argument just pressing the corresponding function key!
 
 ## 👏 Acknowledgements

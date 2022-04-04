@@ -197,8 +197,26 @@ function s:setFunctionKeyLabel(...)
 endfunction
 
 
+function s:runScript(filename)
+  " load list of commands from a file and execute (run) these
+
+  if !filereadable(a:filename)
+    echo "script file not found: " . a:filename
+    return
+  endif
+
+  for line in readfile(a:filename)
+    execute line
+  endfor  
+
+  "echo "executed script file: " . a:filename
+
+endfunction  
+
+
 "
 " USER COMMANDS
 "
-command! NeraShow call s:showFunctionKeysMapping()
+command! NeraMap call s:showFunctionKeysMapping()
 command! -nargs=* NeraSet call s:setFunctionKeyLabel(<f-args>)
+command! -nargs=1 NeraLoad silent call s:runScript(<f-args>)
