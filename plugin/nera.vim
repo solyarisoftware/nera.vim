@@ -219,6 +219,6 @@ endfunction
 "
 " USER COMMANDS
 "
-command! NeraMap call s:showFunctionKeysMapping()
-command! -nargs=* NeraSet call s:setFunctionKeyLabel(<f-args>)
+command! NeraMapping call s:showFunctionKeysMapping()
+command! -nargs=* NeraAssign call s:setFunctionKeyLabel(<f-args>)
 command! -nargs=1 -complete=file NeraLoad call s:runScript(<f-args>)
