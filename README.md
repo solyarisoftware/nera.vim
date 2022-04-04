@@ -181,6 +181,41 @@ Execute all Nera commands previously saved in specified script file.
    :NeraLoad examples/my_project_configs.vim
    ```
 
+
+## `NeraMap` 
+
+Suppose you run commands:
+
+```
+NeraSet <F1>  name 1
+NeraSet <F2>  address 1 
+NeraSet <F3>  company 1 
+NeraSet <F4>  location 1 
+NeraSet <F5>  email 
+```
+
+Afterwad, you want to show the key mappings:
+
+```
+NeraMap
+```
+```
+<F1>  c1w[<C-R><C-O>"](name)<Esc>
+<F2>  c1w[<C-R><C-O>"](address)<Esc>
+<F3>  c1w[<C-R><C-O>"](company)<Esc>
+<F4>  c1w[<C-R><C-O>"](location)<Esc>
+<F5>  c1w[<C-R><C-O>"](email)<Esc>
+<F6>  
+<F6>  
+<F7>  
+<F8>  
+<F9>  
+<F10> 
+<F11>
+<F12> 
+Press ENTER or type command to continue
+```
+
 ## 💡 Tips
 
 - **Undo labeling**
@@ -224,7 +259,7 @@ You can also contact me via email (giorgio.robino@gmail.com).
 
 ## Changelog
 
-- v. 0.4.0
+- v. 0.4.1
   - `NeraLoad` new command to load script of commands
   - `NeraMap` has now a cleaner list of key mappings
   - `NeraSet` now accept the function key argument just pressing the corresponding function key!

@@ -201,15 +201,17 @@ function s:runScript(filename)
   " load list of commands from a file and execute (run) these
 
   if !filereadable(a:filename)
-    echo "script file not found: " . a:filename
+    echo 'error: not found script file: ' . a:filename
     return
   endif
 
   for line in readfile(a:filename)
+    " silent! execute line
     execute line
   endfor  
 
-  "echo "executed script file: " . a:filename
+ echo ''
+ echo 'executed script file: ' . a:filename
 
 endfunction  
 
@@ -219,4 +221,4 @@ endfunction
 "
 command! NeraMap call s:showFunctionKeysMapping()
 command! -nargs=* NeraSet call s:setFunctionKeyLabel(<f-args>)
-command! -nargs=1 NeraLoad silent call s:runScript(<f-args>)
+command! -nargs=1 -complete=file NeraLoad call s:runScript(<f-args>)
