@@ -73,12 +73,12 @@ Utilities:
 | command                                              | description                  |
 | ---                                                  | ---                          |
 | :`NeraMap`                                           | shows function keys mapping  |
-| :`NeraLoad` `command_script_file`                    | load a script file containing Nera (or any other vim `:` commands |
+| :`NeraLoad` `command_script_file`                    | load and execute a script file containing Nera commands or any other vim `:` commands |
 
 
 ## Usage
 
-### `NeraSet` for current (single) word annotation
+### `:NeraSet` for current (single) word annotation
 
 Given the sentence (line):
 
@@ -102,7 +102,7 @@ To assign to function key `<F1>` a substitution for visual mode and single word 
       mi chiamo [Giorgio](person_name) Robino ed abito in corso Magenta 35/4 a Genova
     
 
-### `NeraSet` for Multiple contiguous words annotation
+### `:NeraSet` for Multiple contiguous words annotation
 
 In facts, this is not what you want, because a full person name is usually composed 
 by two consecutive words (*Giorgio Robino*),
@@ -124,7 +124,7 @@ In this case, set the mapping with argument `contiguousWords` set to `2`:
       mi chiamo [Giorgio Robino](person_name) ed abito in corso Magenta 35/4 a Genova
 
 
-### `NeraSet` for visual mode annotation
+### `:NeraSet` for visual mode annotation
 
 Anyway, even if you do not specify the `words number` argument,
 you can proceed withe visual selection mode. So:
@@ -145,7 +145,7 @@ you can proceed withe visual selection mode. So:
       mi chiamo [Giorgio Robino](person_name) ed abito in [corso Magenta 35/4 a Genova](address)
 
 
-## `NeraLoad` 
+### `:NeraLoad` 
 
 Execute all Nera commands previously saved in specified script file.
 
@@ -182,7 +182,7 @@ Execute all Nera commands previously saved in specified script file.
    ```
 
 
-## `NeraMap` 
+### `:NeraMap` 
 
 Suppose you run commands:
 
@@ -229,7 +229,7 @@ Press ENTER or type command to continue
   you set the word mode for a specified number of contiguous words,
   but you also enable the visual mode! You can optionally 
   - select set the cursor at the start of word and press afterward the function key
-  - selct in visual mode a span of words and press afterward the function key
+  - select in visual mode a span of words and press afterward the function key
 
 
 ## 📦 Install
@@ -270,6 +270,13 @@ You can also contact me via email (giorgio.robino@gmail.com).
   that helped me [here](https://vi.stackexchange.com/a/34824/983), 
   inspiring me to build-up this plugin.
 
+## 🤝 Related Project
+
+- I made another plugin possibly complementary: 
+  [Highlight.vim](https://github.com/solyarisoftware/Highlight.vim)
+  to colorize pattern of texts, with a random or specified background colors.
+  A Possible usage is to highlight entity names and entity labels as show
+  here: https://github.com/solyarisoftware/Highlight.vim/tree/master/screenshots#example-4-highlight-entities-having-syntax-entity_value
 
 ## License
 
