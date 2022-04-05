@@ -53,7 +53,7 @@ mi chiamo [Giorgio Robino](person) ed abito in [corso Magenta 35/4 a Genova](add
 
 **What the plugin does?**
 
-With the vim plugin command `:NeraAssign`, 
+With the vim plugin command `:NeraSet`, 
 you can map up to 12 function keys (`<F1>`,...,`<F12>`) to a syntax substitution/decoration "macro" 
 that add a entity label 
 - to a visual selected text,
@@ -67,7 +67,7 @@ In vim command mode (`:`) these commands are available:
 
 | command                                              | description                  |
 | ---                                                  | ---                          |
-| `:NeraAssign` *functionKey* *label* [*contiguousWords*] | maps the specified *functionKey* to a substitution macro with argument *label*, and optional argument *contiguousWords*.  <br><br>*functionKey* valid values are number `1` ... `12` or strings `F1` ... `F12`, or `<F1>` ... `<F12>` key pressing.<br><br>*label* is the entity name (single word in camelCase or snake_case).<br><br>*contiguousWords* is a number of contiguous words to be selected, this is an optional argument (default value is 1).| 
+| `:NeraSet` *functionKey* *label* [*contiguousWords*] | maps the specified *functionKey* to a substitution macro with argument *label*, and optional argument *contiguousWords*.  <br><br>*functionKey* valid values are number `1` ... `12` or strings `F1` ... `F12`, or `<F1>` ... `<F12>` key pressing.<br><br>*label* is the entity name (single word in camelCase or snake_case).<br><br>*contiguousWords* is a number of contiguous words to be selected, this is an optional argument (default value is 1).| 
 
 Utilities:
 | command                                              | description                  |
@@ -78,7 +78,7 @@ Utilities:
 
 ## Usage
 
-### `:NeraAssign` for current (single) word annotation
+### `:NeraSet` for current (single) word annotation
 
 Given the sentence (line):
 
@@ -88,7 +88,7 @@ To assign to function key `<F1>` a substitution for visual mode and single word 
 
 - assign a new "macro" substitution to `<F1>`
 
-      :NeraAssign f1 person_name
+      :NeraSet f1 person_name
 
 - **put the cursor at the begin of the word you want to annotate**: 
 
@@ -102,7 +102,7 @@ To assign to function key `<F1>` a substitution for visual mode and single word 
       mi chiamo [Giorgio](person_name) Robino ed abito in corso Magenta 35/4 a Genova
     
 
-### `:NeraAssign` for Multiple contiguous words annotation
+### `:NeraSet` for Multiple contiguous words annotation
 
 In facts, this is not what you want, because a full person name is usually composed 
 by two consecutive words (*Giorgio Robino*),
@@ -112,7 +112,7 @@ In this case, set the mapping with argument `contiguousWords` set to `2`:
 
 - assign a new "macro" substitution to `<F2>`
 
-      :NeraAssign 2 person_name 2
+      :NeraSet 2 person_name 2
 
 - again put the cursor at the begin of the word you want to annotate: 
 
@@ -124,14 +124,14 @@ In this case, set the mapping with argument `contiguousWords` set to `2`:
       mi chiamo [Giorgio Robino](person_name) ed abito in corso Magenta 35/4 a Genova
 
 
-### `:NeraAssign` for visual mode annotation
+### `:NeraSet` for visual mode annotation
 
 Anyway, even if you do not specify the `words number` argument,
 you can proceed withe visual selection mode. So:
 
 - assign a new "macro" substitution to `<F3>`
 
-      :NeraAssign 3 address
+      :NeraSet 3 address
 
 - go in vim visual mode (pressing `v`) and select the span you want to annotate: 
 
@@ -158,21 +158,21 @@ Execute all Nera commands previously saved in specified script file.
    "
 
    " F1 - F4
-   NeraAssign <F1>  name 1
-   NeraAssign <F2>  address 1 
-   NeraAssign <F3>  company 1 
-   NeraAssign <F4>  location 1 
+   NeraSet <F1>  name 1
+   NeraSet <F2>  address 1 
+   NeraSet <F3>  company 1 
+   NeraSet <F4>  location 1 
 
    " F5 - F8
-   NeraAssign <F5>  email 
-   NeraAssign <F6>  name 2 
-   NeraAssign <F7>  name 3
-   NeraAssign <F8>  address 1 
+   NeraSet <F5>  email 
+   NeraSet <F6>  name 2 
+   NeraSet <F7>  name 3
+   NeraSet <F8>  address 1 
 
    " F9 - F12
-   NeraAssign <F9>  gender
-   NeraAssign <F10> address 3
-   NeraAssign <F12> company 2 
+   NeraSet <F9>  gender
+   NeraSet <F10> address 3
+   NeraSet <F12> company 2 
    ``` 
 
 2. Afterward you run the script from command mode:
@@ -187,11 +187,11 @@ Execute all Nera commands previously saved in specified script file.
 Suppose you run commands:
 
 ```
-:NeraAssign <F1>  name 1
-:NeraAssign <F2>  address 1 
-:NeraAssign <F3>  company 1 
-:NeraAssign <F4>  location 1 
-:NeraAssign <F5>  email 
+:NeraSet <F1>  name 1
+:NeraSet <F2>  address 1 
+:NeraSet <F3>  company 1 
+:NeraSet <F4>  location 1 
+:NeraSet <F5>  email 
 ```
 
 Afterwad, you want to show the key mappings:
@@ -220,12 +220,12 @@ Press ENTER or type command to continue
 
 - **Undo labeling**
 
-  If you are unhappy with your `NeraAssign` labelling, 
+  If you are unhappy with your `NeraSet` labelling, 
   just undo in vim as usual, pressing `u` in normal mode!
 
 - **Visual mode is always on**
 
-  Any time you assign a key with `NeraAssign`, 
+  Any time you assign a key with `NeraSet`, 
   you set the word mode for a specified number of contiguous words,
   but you also enable the visual mode! You can optionally 
   - select set the cursor at the start of word and press afterward the function key
@@ -262,7 +262,7 @@ You can also contact me via email (giorgio.robino@gmail.com).
 - v. 0.4.1
   - `NeraLoad` new command to load script of commands
   - `NeraMapping` has now a cleaner list of key mappings
-  - `NeraAssign` now accept the function key argument just pressing the corresponding function key!
+  - `NeraSet` now accept the function key argument just pressing the corresponding function key!
 
 ## 👏 Acknowledgements
 

@@ -129,9 +129,9 @@ function s:mapFunctionKeyLabelAnnotation(functionKey, label, contiguousWords)
   "
   "     selection in visual mode:
   "                 "named entity composed by six words"           
-  "                 ^      ^      ^        ^  ^   ^
-  "                 |      |      |        |  |   |
-  "                 word1  word2  word3    word4  word6
+  "                  ^     ^      ^        ^  ^   ^
+  "                  |     |      |        |  |   |
+  "                  word1 word2  word3    word4  word6
   "                                           |
   "                                           word5
   "     substitution:
@@ -197,21 +197,33 @@ function s:setFunctionKeyLabel(...)
 endfunction
 
 
-function s:runScript(filename)
+function s:runScript(...)
   " load list of commands from a file and execute (run) these
 
-  if !filereadable(a:filename)
-    echo 'error: not found script file: ' . a:filename
+  if a:0 == 0
+      echo 'error: <script_filename> argument must be specified'
+      return
+  endif
+
+  if a:0 > 1
+      echo 'error: too many arguments'
+      return
+  endif 
+
+  let filename = a:1
+
+  if !filereadable(filename)
+    echo 'error: not found script file: ' . filename
     return
   endif
 
-  for line in readfile(a:filename)
+  for line in readfile(filename)
     " silent! execute line
     execute line
   endfor  
 
  echo ''
- echo 'executed script file: ' . a:filename
+ echo 'executed script file: ' . filename
 
 endfunction  
 
@@ -220,5 +232,5 @@ endfunction
 " USER COMMANDS
 "
 command! NeraMapping call s:showFunctionKeysMapping()
-command! -nargs=* NeraAssign call s:setFunctionKeyLabel(<f-args>)
-command! -nargs=1 -complete=file NeraLoad call s:runScript(<f-args>)
+command! -nargs=* NeraSet call s:setFunctionKeyLabel(<f-args>)
+command! -nargs=* -complete=file NeraLoad call s:runScript(<f-args>)
