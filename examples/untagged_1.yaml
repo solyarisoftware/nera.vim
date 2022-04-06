@@ -1,8 +1,0 @@
-  # untagged.yaml
-  - intent: body_temperature_data
-    examples: |
-      - il termometro misura 36.3 gradi
-      - 36.9
-      - 35,9
-      - la temperatura è di 36 e 7 gradi
-      - 36 , 8
