@@ -3,16 +3,9 @@
 " Named Entities (Rasa-like) Syntax Annotator for Vim editor
 " Vim global plugin for annotate named entities with syntax: [entity_value][entity_name]
 "
-" Last Change:  
-" 01 April 2022
-"
 " Maintainer:   
 " Giorgio Robino <giorgio.robino@gmail.com>
-"
-" Gists:
-"
-" Usage: 
-"
+" 
 
 
 "
@@ -51,6 +44,46 @@ let s:functionKeysDelimiters = [
   \'<F11>',
   \'<F12>'
 \]
+
+"
+" list of contiguous words number,
+"
+let s:contiguousWords = [
+  \'1',
+  \'2',
+  \'3',
+  \'4',
+  \'5',
+  \'6',
+  \'7',
+  \'8',
+  \'9',
+  \'10',
+  \'11',
+  \'12',
+  \'13',
+  \'14',
+  \'15',
+  \'16',
+  \'17',
+  \'18',
+  \'19',
+  \'20',
+\]
+
+"
+" list of labels
+"
+let s:labels = []
+
+
+function s:validateLabel(label)
+
+  if index(s:labels, a:label) < 0  
+    echo "warning: label '" . a:label . "' is not one of the configured labels: " . join(s:labels, ', ')
+  endif
+
+endfunction
 
 
 function s:validateFunctionKey(functionKey)
@@ -182,8 +215,12 @@ function s:setFunctionKeyLabel(...)
       return
   endif 
 
+  " validate function key
   let functionKey = s:validateFunctionKey(a:1)
-  " TODO validate label
+  
+  " validate label
+  call s:validateLabel(a:2)
+
   " TODO validate contiguousWords
 
   if functionKey == v:null
@@ -228,9 +265,67 @@ function s:runScript(...)
 endfunction  
 
 
+function s:labelSet(...)
+  " set the list of 'allowed' labels
+
+  if a:0 == 0
+    if len(s:labels) > 0
+      " labels do already exist?
+      echo 'labels: ' . join(s:labels, ', ')
+      return
+    else
+      " labels do not exist?
+      echo 'There are no labels. Specify as arguments a space-separated list of <labels>'
+      return
+    endif
+  endif
+
+  " assign global list of labels to the list of arguments
+  let s:labels = a:000
+  echo len(s:labels) . ' labels: ' . join(s:labels, ', ')
+endfunction  
+
+
+function s:labelsClear(...)
+  " clear the list of labels
+
+  let s:labels = [] 
+  echo 'label list cleared'
+
+endfunction  
+
+
+function! s:setCompletion(arg, line, pos)
+  " 
+  
+  " https://dev.to/pbnj/how-to-get-make-target-tab-completion-in-vim-4mj1#solution
+  " https://stackoverflow.com/a/6941053/1786393
+  let l = split(a:line[:a:pos-1], '\%(\%(\%(^\|[^\\]\)\\\)\@<!\s\)\+', 1)
+  let n = len(l) - index(l, 'NeraSet') - 1
+
+  if n == 1
+    " first argument = function key
+    let completionList = s:functionKeysDelimiters
+  elseif n == 2
+    " second argument = label
+    let completionList = s:labels
+  else
+    " third argument = contiguous words
+    let completionList = s:contiguousWords
+  endif
+
+  return filter(copy(l:completionList), 'v:val =~ "^' . a:arg . '"')
+
+endfunction
+
 "
 " USER COMMANDS
 "
+command! -nargs=* -complete=customlist,s:setCompletion NeraSet call s:setFunctionKeyLabel(<f-args>)
+
 command! NeraMapping call s:showFunctionKeysMapping()
-command! -nargs=* NeraSet call s:setFunctionKeyLabel(<f-args>)
 command! -nargs=* -complete=file NeraLoad call s:runScript(<f-args>)
+
+command! -nargs=* NeraLabels call s:labelSet(<f-args>)
+command! -nargs=* NeraLabelsClear call s:labelsClear(<f-args>)
+

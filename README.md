@@ -72,8 +72,10 @@ In vim command mode (`:`) these commands are available:
 Utilities:
 | command                                              | description                  |
 | ---                                                  | ---                          |
-| `:NeraMapping`                                           | shows function keys mapping  |
+| `:NeraMapping`                                       | shows function keys mapping  |
 | `:NeraLoad` *command_script_file*                      | load and execute a script file containing Nera commands or any other vim `:` commands |
+| `:NeraLabels` *label ... [label]*                      | Set a list of labels, to be used afterward with `NeraSet` |
+| `:NeraLabelsClear`                                   | Clear the list of preset labels, to be used afterward with `NeraSet` |
 
 
 ## Usage
@@ -144,6 +146,26 @@ you can proceed withe visual selection mode. So:
 
       mi chiamo [Giorgio Robino](person_name) ed abito in [corso Magenta 35/4 a Genova](address)
 
+
+### `:NeraLabels` `:NeraLabelsClear`
+
+You want to prepare a precise (short) list of labels 
+you will use afterward to annotate with `NeraSet`:
+
+    :NeraLabels name surname address city age gender 
+
+This list act as the reference list, to validate `NeraSet` label argument.
+By example, 
+
+```
+NeraSet <F4> job
+```
+generates a warning message, because you are setting a label not previously declared:
+```
+warning: label 'job' is not one of the configured labels: name surname address city age gender
+functionKey: <F4>, label: job, contiguous words: 1
+Press ENTER or type command to continue
+```
 
 ### `:NeraLoad` 
 
@@ -218,6 +240,11 @@ Press ENTER or type command to continue
 
 ## 💡 Tips
 
+- Commands arguments autocompletion
+
+  When using command `NeraSet` you can use arguments autocompletion (function key, labels, etc.).
+  When using command `NeraLoad` you can exploit filae name argument autocompletion
+
 - **Undo labeling**
 
   If you are unhappy with your `NeraSet` labelling, 
@@ -243,12 +270,16 @@ Using vim-plug, in your `.vimrc` file:
 
 This project is work-in-progress.
 
-I'm not a vimscript expert, so any contribute is welcome.
+I'm not a vimscript expert, so any coding contribute is welcome.
 
 For any proposal and issue, please submit here on github issues for bugs, suggestions, etc.
 You can also contact me via email (giorgio.robino@gmail.com).
 
+I'm especially interested in alternative entity syntax formats. Please let me know. 
+Do not exitate to open a 'change request' issue.
+
 **IF YOU LIKE THE PROJECT, PLEASE ⭐️STAR THIS REPOSITORY TO SHOW YOUR SUPPORT! 🙏**
+
 
 ## To do
 
@@ -257,12 +288,18 @@ You can also contact me via email (giorgio.robino@gmail.com).
 - extend syntax, managing not only RASA-like style syntax annotation, 
   but also other variants (a la Alexa, DialogFlow, etc.)
 
+
 ## Changelog
+
+- v. 0.5.0
+  - new commands `NeraLabels` and `NeraLabelsClear`
+  - `NeraSet` arguments autocompletion
 
 - v. 0.4.1
   - `NeraLoad` new command to load script of commands
   - `NeraMapping` has now a cleaner list of key mappings
   - `NeraSet` now accept the function key argument just pressing the corresponding function key!
+
 
 ## 👏 Acknowledgements
 
@@ -270,13 +307,15 @@ You can also contact me via email (giorgio.robino@gmail.com).
   that helped me [here](https://vi.stackexchange.com/a/34824/983), 
   inspiring me to build-up this plugin.
 
+
 ## 🤝 Related Project
 
 - I made another plugin possibly complementary: 
   [Highlight.vim](https://github.com/solyarisoftware/Highlight.vim)
   to colorize pattern of texts, with a random or specified background colors.
   A Possible usage is to highlight entity names and entity labels as show
-  here: https://github.com/solyarisoftware/Highlight.vim/tree/master/screenshots#example-4-highlight-entities-having-syntax-entity_value
+  here: [highlight entities having RASA-YAML entity annotation syntax](https://github.com/solyarisoftware/Highlight.vim/tree/master/screenshots#example-4-highlight-entities-having-syntax-entity_value)
+
 
 ## License
 
