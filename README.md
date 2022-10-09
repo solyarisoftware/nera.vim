@@ -272,12 +272,13 @@ Using vim-plug, in your `.vimrc` file:
     Plug 'solyarisoftware/nera.vim'
 
 
-## Data Examples 
+## Data Examples and live demo
 
 Some files available in [examples](examples/) directory of this repo.
-Here a live demo:
 
-![live Demo](examples/example_1.gif)
+| [![](https://img.youtube.com/vi/dgU9US4t_4U/0.jpg)](https://www.youtube.com/watch?v=dgU9US4t_4U&feature=youtu.be)|
+|:--:|
+| Live demo |
 
 
 ## ⭐️ Status / How to contribute
