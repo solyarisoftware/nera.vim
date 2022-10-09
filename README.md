@@ -6,11 +6,14 @@
 ## 🤔 what is it for?
 
 This vim plugin helps to annotate named entities 
-using simple entity annotation syntax,
-used in [RASA](https://rasa.com/) YAML files and any other compatible engine. 
+using simple entity annotation syntax, using inline-text mark-up tags,
+following the format used in [RASA](https://rasa.com/docs/rasa/training-data-format/) YAML files. 
+
+The final goal is to possibly demonstrate how fast is annotate with a text editor (specifically vim) a text file 
+of intents + entities examples of a training set. 
 
 
-**What the named entity `[entity_value](entity_label)` syntax fomat is?** 
+**What the named entity `[entity_value](entity_label)` syntax format is?** 
 
 ```
 [entity_value](entity_label)
@@ -38,17 +41,18 @@ Where:
 By example, given the sentence
 
 ```
-mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
+my name is Giorgio Robino and I live in Genova, corso Magenta 35/4
 ```
 
-You want to annotate entities entity_label = entity_value:
+You want to annotate three entities (entity_label = entity_value):
 - `person` = `Giorgio Robino`
-- `address` = `corso Magenta 35/4 a Genova`
+- `city` = `Genova`
+- `address` = `corso Magenta 35/4`
 
 
 Using above described syntax, the annotated sentence is:
 ```
-mi chiamo [Giorgio Robino](person) ed abito in [corso Magenta 35/4 a Genova](address)
+my name is [Giorgio Robino](person) and I live in [Genova](city), [corso Magenta 35/4](address)
 ```
 
 **What the plugin does?**
@@ -57,7 +61,7 @@ With the vim plugin command `:NeraSet`,
 you can map up to 12 function keys (`<F1>`,...,`<F12>`) to a syntax substitution/decoration "macro" 
 that add a entity label 
 - to a visual selected text,
-- or to the current word and a configurable number of adiacent words,
+- or to the current word and a configurable number of adjacent words,
   setting the cursor to the start of the word (entity) you want to tag.
 
 
@@ -84,7 +88,7 @@ Utilities:
 
 Given the sentence (line):
 
-    mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
+    my name is Giorgio Robino and I live in Genova, corso Magenta 35/4
 
 To assign to function key `<F1>` a substitution for visual mode and single word selection:
 
@@ -94,19 +98,19 @@ To assign to function key `<F1>` a substitution for visual mode and single word 
 
 - **put the cursor at the begin of the word you want to annotate**: 
 
-      mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
-                ^
-                |
-                set the vim cursor here
+      my name is Giorgio Robino  nd I live in Genova, corso Magenta 35/4
+                 ^
+                 |
+                 set the vim cursor here
 
 - press `<F1>`. The line is updated with the entity notation syntax decoration:
 
-      mi chiamo [Giorgio](person_name) Robino ed abito in corso Magenta 35/4 a Genova
-    
+      my name is [Giorgio](person_name) Robino and I live in Genova, corso Magenta 35/4
+
 
 ### `:NeraSet` for Multiple contiguous words annotation
 
-In facts, this is not what you want, because a full person name is usually composed 
+Maybe the example above is not what you exactly want, because a full person name is usually composed 
 by two consecutive words (*Giorgio Robino*),
 so you maybe want to preset (another or the same) function key `<F1>` 
 to automatically substitute the current and the successive word.
@@ -114,16 +118,18 @@ In this case, set the mapping with argument `contiguousWords` set to `2`:
 
 - assign a new "macro" substitution to `<F2>`
 
-      :NeraSet 2 person_name 2
+      :NeraSet F2 person_name 2
 
 - again put the cursor at the begin of the word you want to annotate: 
 
-      mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
-                ^
+      my name is Giorgio Robino and I live in Genova, corso Magenta 35/4
+                 ^
+                 |
+                 set the vim cursor here
 
 - press `<F2>`. The line is updated and in this case 
 
-      mi chiamo [Giorgio Robino](person_name) ed abito in corso Magenta 35/4 a Genova
+      my name is [Giorgio Robino](person_name) and I live in Genova, corso Magenta 35/4
 
 
 ### `:NeraSet` for visual mode annotation
@@ -133,18 +139,18 @@ you can proceed withe visual selection mode. So:
 
 - assign a new "macro" substitution to `<F3>`
 
-      :NeraSet 3 address
+      :NeraSet <F3> address
 
 - go in vim visual mode (pressing `v`) and select the span you want to annotate: 
 
-      mi chiamo Giorgio Robino ed abito in corso Magenta 35/4 a Genova
-                                           ^                         ^
-                                           |                         |
-                                           start visual selection    end visual selection
+      my name is Giorgio Robino and I live in Genova, corso Magenta 35/4
+                                              ^                        ^
+                                              |                        |
+                                              start visual selection   end visual selection
 
 - press `esc` and `<F3>`. The line is updated and in this case 
 
-      mi chiamo [Giorgio Robino](person_name) ed abito in [corso Magenta 35/4 a Genova](address)
+      my name is [Giorgio Robino](person_name) and I live in [Genova, corso Magenta 35/4](address)
 
 
 ### `:NeraLabels` `:NeraLabelsClear`
@@ -216,7 +222,7 @@ Suppose you run commands:
 :NeraSet <F5>  email 
 ```
 
-Afterwad, you want to show the key mappings:
+Afterward, you want to show the key mappings:
 
 ```
 :NeraMapping
@@ -240,14 +246,14 @@ Press ENTER or type command to continue
 
 ## 💡 Tips
 
-- Commands arguments autocompletion
+- Commands arguments auto completion
 
-  When using command `NeraSet` you can use arguments autocompletion (function key, labels, etc.).
-  When using command `NeraLoad` you can exploit filae name argument autocompletion
+  When using command `NeraSet` you can use arguments auto completion (function key, labels, etc.).
+  When using command `NeraLoad` you can exploit file name argument auto completion
 
 - **Undo labeling**
 
-  If you are unhappy with your `NeraSet` labelling, 
+  If you are unhappy with your `NeraSet` labeling, 
   just undo in vim as usual, pressing `u` in normal mode!
 
 - **Visual mode is always on**
@@ -266,17 +272,25 @@ Using vim-plug, in your `.vimrc` file:
     Plug 'solyarisoftware/nera.vim'
 
 
+## Data Examples 
+
+Some files available in [examples](examples/) directory of this repo.
+Here a live demo:
+
+![live Demo](examples/example_1.gif)
+
+
 ## ⭐️ Status / How to contribute
 
-This project is work-in-progress.
+This project is a work-in-progress proof-of-concept.
 
 I'm not a vimscript expert, so any coding contribute is welcome.
 
 For any proposal and issue, please submit here on github issues for bugs, suggestions, etc.
 You can also contact me via email (giorgio.robino@gmail.com).
 
-I'm especially interested in alternative entity syntax formats. Please let me know. 
-Do not exitate to open a 'change request' issue.
+I'm especially interested in any markup-based entity syntax formats alternative/different from RASA. Please let me know. 
+Do not esitate to open a 'change request' issue.
 
 **IF YOU LIKE THE PROJECT, PLEASE ⭐️STAR THIS REPOSITORY TO SHOW YOUR SUPPORT! 🙏**
 
@@ -284,16 +298,18 @@ Do not exitate to open a 'change request' issue.
 ## To do
 
 - add a help / online tutorial command
-- tune arguments validation
+- improve arguments validation
 - extend syntax, managing not only RASA-like style syntax annotation, 
-  but also other variants (a la Alexa, DialogFlow, etc.)
-
+  but also other different systems' syntax:
+  - [MindMeld Labeled Queries Files](https://www.mindmeld.com/docs/quickstart/06_generate_representative_training_data.html)
+  - [Microsoft Bot Framework Language Model Files with Machine Learning Entities](https://learn.microsoft.com/en-us/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0#machine-learned-entity)
+ - [Amazon Alexa Interaction Model](https://developer.amazon.com/en-US/docs/alexa/custom-skills/create-intents-utterances-and-slots.html)
 
 ## Changelog
 
 - v. 0.5.0
   - new commands `NeraLabels` and `NeraLabelsClear`
-  - `NeraSet` arguments autocompletion
+  - `NeraSet` arguments auto-completion
 
 - v. 0.4.1
   - `NeraLoad` new command to load script of commands
