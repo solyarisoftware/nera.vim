@@ -272,13 +272,12 @@ Using vim-plug, in your `.vimrc` file:
     Plug 'solyarisoftware/nera.vim'
 
 
-## Data Examples and live demo
+## Live demo
 
 Some files available in [examples](examples/) directory of this repo.
+Here a live demo of this plugin commands usage to annotate entities:
 
-| [![](https://img.youtube.com/vi/dgU9US4t_4U/0.jpg)](https://www.youtube.com/watch?v=dgU9US4t_4U&feature=youtu.be)|
-|:--:|
-| Live demo |
+[![](https://img.youtube.com/vi/dgU9US4t_4U/0.jpg)](https://www.youtube.com/watch?v=dgU9US4t_4U&feature=youtu.be)
 
 
 ## ⭐️ Status / How to contribute
@@ -304,7 +303,7 @@ Do not esitate to open a 'change request' issue.
   but also other different systems' syntax:
   - [MindMeld Labeled Queries Files](https://www.mindmeld.com/docs/quickstart/06_generate_representative_training_data.html)
   - [Microsoft Bot Framework Language Model Files with Machine Learning Entities](https://learn.microsoft.com/en-us/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0#machine-learned-entity)
- - [Amazon Alexa Interaction Model](https://developer.amazon.com/en-US/docs/alexa/custom-skills/create-intents-utterances-and-slots.html)
+  - [Amazon Alexa Interaction Model](https://developer.amazon.com/en-US/docs/alexa/custom-skills/create-intents-utterances-and-slots.html)
 
 ## Changelog
 
